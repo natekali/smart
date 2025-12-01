@@ -1,5 +1,5 @@
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
 import { getProfileSettings } from "@/app/lib/mock-data";
 
 type ProfileSettingsPageData = Awaited<ReturnType<typeof loadProfileSettingsPage>>;

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
 import { getUserProfile } from "@/app/lib/mock-data";
 import { usernameSchema } from "@/app/lib/schemas";
 

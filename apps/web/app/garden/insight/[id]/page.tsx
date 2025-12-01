@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
+import { InsightCard } from "@/components/InsightCard";
 import { getGardenInsight } from "@/app/lib/mock-data";
 import { identifierSchema } from "@/app/lib/schemas";
 
@@ -25,7 +26,14 @@ export default async function GardenInsightPage({ params }: InsightPageProps) {
   return (
     <AppShell title={insight.title} description={`Last edited ${insight.lastEdited}`}>
       <PageSection title="Insight" description="Reference insight details">
-        <p className="text-base text-slate-700 dark:text-slate-200">{insight.excerpt}</p>
+        <InsightCard
+          id={insight.id}
+          title={insight.title}
+          excerpt={insight.excerpt}
+          tags={insight.tags}
+          lastEdited={insight.lastEdited}
+          mood="neutral"
+        />
       </PageSection>
 
       <PageSection title="Tags" description="Contextual labels">

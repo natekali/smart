@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
+import { InsightCard } from "@/components/InsightCard";
 import { getGardenOverview, getGardenInsights } from "@/app/lib/mock-data";
 
 type GardenPageData = Awaited<ReturnType<typeof loadGardenPage>>;
@@ -48,25 +49,22 @@ export default async function GardenPage() {
       <PageSection title="Recent insights" description="Latest additions to your garden">
         <div className="grid gap-4 md:grid-cols-2">
           {insights.map((insight) => (
-            <Link
+            <InsightCard
               key={insight.id}
-              href={`/garden/insight/${insight.id}`}
-              className="block rounded-lg border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-blue-500 hover:bg-blue-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-blue-500 dark:hover:bg-blue-900/20"
-            >
-              <h3 className="font-semibold text-slate-900 dark:text-white">{insight.title}</h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{insight.excerpt}</p>
-              <div className="mt-3 flex gap-2">
-                {insight.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-2 text-xs text-slate-500">Last edited: {insight.lastEdited}</p>
-            </Link>
+              id={insight.id}
+              title={insight.title}
+              excerpt={insight.excerpt}
+              tags={insight.tags}
+              lastEdited={insight.lastEdited}
+              footer={
+                <Link
+                  className="font-medium text-blue-600 underline-offset-2 hover:underline"
+                  href={`/garden/insight/${insight.id}`}
+                >
+                  View insight
+                </Link>
+              }
+            />
           ))}
         </div>
       </PageSection>

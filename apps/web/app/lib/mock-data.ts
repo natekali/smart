@@ -305,7 +305,7 @@ const PATHS: Record<string, LearningPathDetail> = {
 
 export async function getPaths(): Promise<LearningPath[]> {
   await delay();
-  return Object.values(PATHS).map(({ milestones, ...path }) => path);
+  return Object.values(PATHS).map(({ milestones: _milestones, ...path }) => path);
 }
 
 export async function getPathDetail(id: string): Promise<LearningPathDetail> {
