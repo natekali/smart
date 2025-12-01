@@ -25,5 +25,14 @@ yarn-error.log*
 # Turbo
 .turbo
 
+# Supabase local artifacts
+supabase/.branches
+supabase/.temp
+.supabase
+packages/db/supabase/.branches
+packages/db/supabase/.temp
+packages/db/supabase/.env
+packages/db/supabase/.supabase
+
 # TypeScript
 *.tsbuildinfo
