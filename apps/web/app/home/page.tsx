@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
+import { IdeaCard, mockIdeaCards } from "@/components/IdeaCard";
 import { getHomeOverview, getWorkspaceStats } from "@/app/lib/mock-data";
 
 type HomePageData = Awaited<ReturnType<typeof loadHomePage>>;
@@ -53,6 +54,14 @@ export default async function HomePage() {
               <p className="font-medium text-slate-900 dark:text-white">{link.label}</p>
               <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{link.description}</p>
             </Link>
+          ))}
+        </div>
+      </PageSection>
+
+      <PageSection title="Active ideas" description="UI kit IdeaCards rendered with mock data">
+        <div className="grid gap-4 md:grid-cols-2">
+          {mockIdeaCards.slice(0, 2).map((idea) => (
+            <IdeaCard key={idea.id} {...idea} />
           ))}
         </div>
       </PageSection>

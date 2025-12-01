@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AppShell } from "@/app/components/AppShell";
+import { AppShell } from "@/components/AppShell";
 import { getPricingPlans } from "@/app/lib/mock-data";
 
 type PricingPageData = Awaited<ReturnType<typeof loadPricingPage>>;

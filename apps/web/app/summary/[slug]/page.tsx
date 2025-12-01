@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { z } from "zod";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
+import { SummaryHeader } from "@/components/SummaryHeader";
+import { SummaryContent } from "@/components/SummaryContent";
+import { AudioPlayer } from "@/components/AudioPlayer";
 import { getSummaryDocument } from "@/app/lib/mock-data";
 import { slugSchema } from "@/app/lib/schemas";
 
@@ -27,23 +30,32 @@ export default async function SummaryPage({ params }: SummaryPageProps) {
     notFound();
   }
 
+  const summarySections = [
+    {
+      title: "Summary overview",
+      body: document.summary,
+    },
+    {
+      title: "Highlights",
+      body: "Top signals to share with the team.",
+      insights: document.highlights,
+    },
+  ];
+
   return (
     <AppShell title={document.title} description={`Last updated: ${document.lastUpdated}`}>
-      <PageSection title="Summary" description="Key insights and learnings">
-        <p className="text-base leading-relaxed text-slate-700 dark:text-slate-200">{document.summary}</p>
-      </PageSection>
+      <SummaryHeader
+        title={document.title}
+        subtitle="Narrative generated from Smart research"
+        lastUpdated={document.lastUpdated}
+        status="published"
+        tags={["summary", document.slug]}
+      />
 
-      <PageSection title="Highlights" description="Top takeaways from this summary">
-        <ul className="space-y-2">
-          {document.highlights.map((highlight, idx) => (
-            <li key={idx} className="flex items-start gap-3">
-              <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
-                {idx + 1}
-              </span>
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
+      <SummaryContent sections={summarySections} />
+
+      <PageSection title="Audio companion" description="Share a narrated version of this summary">
+        <AudioPlayer title={`${document.title} audio`} duration={485} />
       </PageSection>
     </AppShell>
   );

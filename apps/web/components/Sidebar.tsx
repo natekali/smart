@@ -1,15 +1,26 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type NavItem = {
+export type SidebarNavItem = {
   label: string;
   href: string;
   match?: string;
 };
 
-const navSections: { title: string; items: NavItem[] }[] = [
+export type SidebarSection = {
+  title: string;
+  items: SidebarNavItem[];
+};
+
+export type SidebarProps = {
+  sections?: SidebarSection[];
+  footer?: ReactNode;
+};
+
+export const defaultSidebarSections: SidebarSection[] = [
   {
     title: "Workspace",
     items: [
@@ -17,6 +28,7 @@ const navSections: { title: string; items: NavItem[] }[] = [
       { label: "Home", href: "/home" },
       { label: "Pricing", href: "/pricing" },
       { label: "Review", href: "/review" },
+      { label: "Components Demo", href: "/components-demo" },
     ],
   },
   {
@@ -55,10 +67,10 @@ const navSections: { title: string; items: NavItem[] }[] = [
   },
 ];
 
-export function Sidebar() {
+export function Sidebar({ sections = defaultSidebarSections, footer }: SidebarProps) {
   const pathname = usePathname();
 
-  const isActive = (item: NavItem) => {
+  const isActive = (item: SidebarNavItem) => {
     const target = item.match ?? item.href;
     if (target === "/") {
       return pathname === "/";
@@ -73,7 +85,7 @@ export function Sidebar() {
     <aside className="flex w-64 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
       <div className="flex-1 overflow-y-auto p-4">
         <nav className="space-y-6">
-          {navSections.map((section) => (
+          {sections.map((section) => (
             <div key={section.title}>
               <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 {section.title}
@@ -95,6 +107,7 @@ export function Sidebar() {
           ))}
         </nav>
       </div>
+      {footer && <div className="border-t border-slate-200 p-4 text-xs text-slate-500 dark:border-slate-800">{footer}</div>}
     </aside>
   );
 }

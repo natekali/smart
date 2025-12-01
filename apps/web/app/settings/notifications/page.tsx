@@ -1,5 +1,5 @@
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
 import { getNotificationSettings } from "@/app/lib/mock-data";
 
 type NotificationSettingsPageData = Awaited<ReturnType<typeof loadNotificationSettingsPage>>;

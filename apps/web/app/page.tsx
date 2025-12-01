@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { AppShell } from "@/app/components/AppShell";
-import { PageSection } from "@/app/components/PageSection";
+import { AppShell } from "@/components/AppShell";
+import { PageSection } from "@/components/PageSection";
 import { getWorkspaceStats } from "@/app/lib/mock-data";
 import { getSupabaseEnvSummary } from "@smart/db";
 
