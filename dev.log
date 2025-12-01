@@ -1,0 +1,34 @@
+
+> smart@0.0.0 dev /home/engine/project
+> turbo run dev
+
+
+Attention:
+Turborepo now collects completely anonymous telemetry regarding usage.
+This information is used to shape the Turborepo roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://turborepo.com/docs/telemetry
+
+turbo 2.6.1
+
+• Packages in scope: @smart/db, @smart/web
+• Running dev in 2 packages
+• Remote caching disabled
+@smart/web:dev: cache bypass, force executing 2171ef2a0266f618
+@smart/web:dev: 
+@smart/web:dev: > @smart/web@0.0.0 dev /home/engine/project/apps/web
+@smart/web:dev: > next dev
+@smart/web:dev: 
+@smart/web:dev:    ▲ Next.js 16.0.6 (Turbopack)
+@smart/web:dev:    - Local:         http://localhost:3000
+@smart/web:dev:    - Network:       http://10.16.67.154:3000
+@smart/web:dev: 
+@smart/web:dev:  ✓ Starting...
+@smart/web:dev: Attention: Next.js now collects completely anonymous telemetry regarding usage.
+@smart/web:dev: This information is used to shape Next.js' roadmap and prioritize features.
+@smart/web:dev: You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+@smart/web:dev: https://nextjs.org/telemetry
+@smart/web:dev: 
+@smart/web:dev:  ✓ Ready in 1739ms
+ ELIFECYCLE  Command failed.
+ ERROR  run failed: command  exited (1)
