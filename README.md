@@ -76,6 +76,9 @@ Shared Supabase client package with:
 - TypeScript
 - Supabase client utilities
 - Type-safe database access
+- Complete SQL schema with migrations
+- Row-level security policies
+- See [packages/db/README.md](packages/db/README.md) for database setup instructions
 
 ## Development
 
